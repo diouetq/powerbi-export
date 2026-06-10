@@ -23,7 +23,7 @@ from datetime import datetime
 
 CLIENT_ID     = "49b261db-6807-4852-ad9a-e40e1a4c3826"
 TENANT_ID     = "b00276c9-2b6f-45fa-bc61-07a02cbf646e"
-CLIENT_SECRET = os.environ.get("CLIENT_SECRET", "n6x8Q~GHps-jmsoLc7Tg3eM3.Kt4oNY4tnFHqbNL")
+CLIENT_SECRET = os.environ.get("CLIENT_SECRET", "")
 
 REPORT_ID     = "54fe5aa9-31b7-4eee-bcb8-2e09fbce3451"
 WORKSPACE_ID  = "41d4b6d3-34d9-41d3-a051-9f91192cc26a"
