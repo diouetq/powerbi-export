@@ -25,18 +25,18 @@ CLIENT_ID     = "49b261db-6807-4852-ad9a-e40e1a4c3826"
 TENANT_ID     = "b00276c9-2b6f-45fa-bc61-07a02cbf646e"
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET", "n6x8Q~GHps-jmsoLc7Tg3eM3.Kt4oNY4tnFHqbNL")
 
-REPORT_ID     = "ba96cdf5-fb28-4650-bb57-8a2ad27e9d56"
+REPORT_ID     = "54fe5aa9-31b7-4eee-bcb8-2e09fbce3451"
 WORKSPACE_ID  = "41d4b6d3-34d9-41d3-a051-9f91192cc26a"
 
-FILTER_TABLE  = "Dim_Organisme_Export"
-FILTER_COLUMN = "ORGANISME"
+FILTER_TABLE  = "Dim_Bookmaker"
+FILTER_COLUMN = "Bookmaker"
 
 MAX_WAIT_TIME  = 600
 CHECK_INTERVAL = 5
 
 ALLOWED_ORGANISMES = [
-    "Aiguillon Construction",
-    "FINISTERE HABITAT",
+    "Winamax",
+    "Unibet",
 ]
 
 CORS_ORIGINS = "*"
