@@ -138,7 +138,7 @@
   <div class="pbi-wrapper">
     <iframe
       title="Rapport Power BI"
-      src="https://app.powerbi.com/view?r=eyJrIjoiMzU3NmUwN2MtMThmNy00OTNhLWFmZjYtNWE0OTYwN2U1YjAzIiwidCI6ImIwMDI3NmM5LTJiNmYtNDVmYS1iYzYxLTA3YTAyY2JmNjQ2ZSJ9"
+      src="https://app.powerbi.com/view?r=eyJrIjoiODYzYWFmNWEtODI4ZC00ODk5LTg1MzYtOWUxNzZmODAzNmQ4IiwidCI6ImIwMDI3NmM5LTJiNmYtNDVmYS1iYzYxLTA3YTAyY2JmNjQ2ZSJ9"
       allowfullscreen>
     </iframe>
   </div>
@@ -149,10 +149,9 @@
     <span class="export-label">📥 Exporter :</span>
 
     <select id="organisme">
-      <option value="">— Tous les bookmakers —</option>
-      <option value="Winamax">Winamax</option>
-      <option value="Unibet">Unibet</option>
-      <option value="Betclic">Betclic</option>
+      <option value="">— Tous les organismes —</option>
+      <option value="Aiguillon Construction">Aiguillon Construction</option>
+      <option value="FINISTERE HABITAT">FINISTERE HABITAT</option>
     </select>
 
     <div class="format-group">
@@ -195,6 +194,7 @@
       const organisme = document.getElementById("organisme").value.trim();
       const params    = new URLSearchParams({ format: selectedFormat });
       if (organisme) params.set("organisme", organisme);
+
       const url = `${SERVER_URL}/export?${params}`;
 
       btn.disabled = true;
@@ -206,9 +206,10 @@
           const err = await resp.json().catch(() => ({ error: "Erreur serveur" }));
           throw new Error(err.error || `HTTP ${resp.status}`);
         }
-        const disposition = resp.headers.get("Content-Disposition") || "";
-        const match = disposition.match(/filename[^;=\n]*=(?:(['"])([^'"]*)\1|([^;\n]*))/);
-        const filename = match ? (match[2] || match[3]).trim() : `rapport.${selectedFormat.toLowerCase()}`;
+        const organisme = document.getElementById("organisme").value.trim();
+        const date = new Date().toISOString().split("T")[0];
+        const base = organisme ? organisme.replace(/[<>:"/\\|?*']/g, "_") : "Rapport";
+        const filename = `${base}_${date}.${selectedFormat.toLowerCase()}`;
         const blob = await resp.blob();
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
