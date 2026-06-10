@@ -59,7 +59,7 @@ EXTENSIONS = {"PDF": "pdf", "PPTX": "pptx"}
 # ============================================================
 
 app = Flask(__name__)
-CORS(app, origins=CORS_ORIGINS)
+CORS(app, origins=CORS_ORIGINS, expose_headers=["Content-Disposition"])
 
 logging.basicConfig(
     level=logging.INFO,
